@@ -12,6 +12,15 @@ const Home = () => {
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (id)=>{
+    axios.delete('http://localhost:5000/delete/'+id)
+    .then((res) => {
+      location.reload()
+    })
+    .catch((err) => console.log(err));
+  }
+
   return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
@@ -27,16 +36,16 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((students, index) => {
+            {data.map((student, index) => {
               return (
                 <tr key={index}>
-                  <td>{students.id}</td>
-                  <td>{students.name}</td>
-                  <td>{students.email}</td>
+                  <td>{student.id}</td>
+                  <td>{student.name}</td>
+                  <td>{student.email}</td>
                   <td>
-                    <button className="btn btn-sm btn-info">Read</button>
-                    <button className="btn btn-sm btn-primary mx-2">Edit</button>
-                    <button className="btn btn-sm btn-danger">Delete</button>
+                    <Link to={`/read/${student.id}`}><button className="btn btn-sm btn-info">Read</button></Link>
+                    <Link to={`/edit/${student.id}`}><button className="btn btn-sm btn-primary mx-2">Edit</button></Link>
+                    <button onClick={()=> handleDelete(student.id)} className="btn btn-sm btn-danger">Delete</button>
                   </td>
                 </tr>
               );
