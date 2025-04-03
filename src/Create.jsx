@@ -10,7 +10,7 @@ const Create = () => {
     const navigate = useNavigate()
     const handleSubmit = (e)=>{
         e.preventDefault()
-        axios.post('http://localhost:5000/student',values)
+        axios.post('https://node-mysql-studentlist-server.onrender.com/student',values)
         .then(res=>{console.log(res)
             navigate('/')
         })

@@ -6,7 +6,7 @@ const Read = () => {
     const {id} = useParams();
     const [student,setStudent] = useState([])
     useEffect(()=>{
-        axios.get(`http://localhost:5000/read/${id}`)
+        axios.get(`https://node-mysql-studentlist-server.onrender.com/read/${id}`)
         .then(res=>{console.log(res)
             setStudent(res.data[0])
         })

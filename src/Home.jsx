@@ -8,13 +8,13 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000")
+      .get("https://node-mysql-studentlist-server.onrender.com")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
 
   const handleDelete = (id)=>{
-    axios.delete('http://localhost:5000/delete/'+id)
+    axios.delete('https://node-mysql-studentlist-server.onrender.com/delete/'+id)
     .then((res) => {
       location.reload()
     })

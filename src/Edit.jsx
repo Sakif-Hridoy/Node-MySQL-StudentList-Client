@@ -12,7 +12,7 @@ const Edit = () => {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/read/${id}`)
+        axios.get(`https://node-mysql-studentlist-server.onrender.com/read/${id}`)
             .then(res => {
                 console.log(res);
                 if (res.data.length > 0) {
@@ -28,7 +28,7 @@ const Edit = () => {
     const handleEdit = (e) => {
         e.preventDefault();
         console.log(edit)
-       axios.put(`http://localhost:5000/update/${id}`,edit)
+       axios.put(`https://node-mysql-studentlist-server.onrender.com/update/${id}`,edit)
        .then(res=>{console.log(res)
         navigate('/')
        })
